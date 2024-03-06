@@ -10,24 +10,24 @@ const ridePrice = userKm * kmPrice
 const roundRidePrice = ridePrice.toFixed(2)
 
 // sconto under e over
-let underDiscount = (ridePrice * 20) / 100
-let totalUnderPrice = ridePrice - underDiscount
+let totalUnderPrice;
+let totalOverPrice;
 
-let overDiscount = (ridePrice * 40) / 100
-let totalOverPrice = ridePrice - overDiscount
-
-// // arrotondare a due decimali
-
-const roundedUnderPrice = totalUnderPrice.toFixed(2);
-const roundedOverPrice = totalOverPrice.toFixed(2);
+if(userAge < 18){
+    underDiscount = (ridePrice * 20) / 100;
+    totalUnderPrice = ridePrice - underDiscount;
+} else if(userAge >=65){
+    overDiscount = (ridePrice * 40) / 100;
+    totalOverPrice = ridePrice - overDiscount;
+}
 
 // // calcolo
 let userMessage
 
 if(userAge < 18){
-    userMessage = `Intende percorrere ${userKm}Km. Il prezzo totale sarebbe di ${roundRidePrice}€. Lei ha diritto al 20% di sconto. Il prezzo effettivo del suo biglietto è: ${roundedUnderPrice}€`
+    userMessage = `Intende percorrere ${userKm}Km. Il prezzo totale sarebbe di ${roundRidePrice}€. Lei ha diritto al 20% di sconto. Il prezzo effettivo del suo biglietto è: ${totalUnderPrice.toFixed(2)}€`
 } else if (userAge > 65){
-    userMessage = `Intende percorrere ${userKm}Km. Il prezzo totale sarebbe di ${roundRidePrice}€. Lei ha diritto al 40% di sconto. Il prezzo effettivo del suo biglietto è: ${roundedOverPrice}€`
+    userMessage = `Intende percorrere ${userKm}Km. Il prezzo totale sarebbe di ${roundRidePrice}€. Lei ha diritto al 40% di sconto. Il prezzo effettivo del suo biglietto è: ${totalOverPrice.toFixed(2)}€`
 } else{
     userMessage = `Intende percorrere ${userKm}Km. Il prezzo totale del suo biglietto è di ${roundRidePrice}€`
 }
