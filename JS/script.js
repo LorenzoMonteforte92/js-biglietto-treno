@@ -7,33 +7,19 @@ const userAge = parseInt(prompt('Qual è la sua età?'))
 // prezzo della tratta per km
 const kmPrice = 0.21
 const ridePrice = userKm * kmPrice
-function roundToTwo(ridePrice) {
-    return +(Math.round(ridePrice + "e+2") + "e-2");
-  }
-const roundRidePrice = roundToTwo(ridePrice)
+const roundRidePrice = ridePrice.toFixed(2)
 
-// // sconto del 20% per under 18
-const underDiscount = (ridePrice * 20) / 100
-const totalUnderPrice = ridePrice - underDiscount
+// sconto under e over
+let underDiscount = (ridePrice * 20) / 100
+let totalUnderPrice = ridePrice - underDiscount
 
-// sconto del 40% per over 65
-const overDiscount = (ridePrice * 40) / 100
-const totalOverPrice = ridePrice - overDiscount
+let overDiscount = (ridePrice * 40) / 100
+let totalOverPrice = ridePrice - overDiscount
 
 // // arrotondare a due decimali
-function roundToTwo(totalUnderPrice) {
-    return +(Math.round(totalUnderPrice + "e+2") + "e-2");
-  }
-const roundedUnderPrice = roundToTwo(totalUnderPrice);
 
-console.log(roundToTwo(totalUnderPrice))
-
-function roundToTwo(totalOverPrice) {
-    return +(Math.round(totalOverPrice + "e+2") + "e-2");
-  }
-
-
-const roundedOverPrice = roundToTwo(totalOverPrice);
+const roundedUnderPrice = totalUnderPrice.toFixed(2);
+const roundedOverPrice = totalOverPrice.toFixed(2);
 
 // // calcolo
 let userMessage
